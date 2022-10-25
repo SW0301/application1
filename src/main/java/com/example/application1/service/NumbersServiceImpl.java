@@ -25,11 +25,12 @@ public class NumbersServiceImpl implements NumbersService{
 
     @Override
     public int median(ArrayList<Integer> numbersList) {
-        Collections.sort(numbersList);
-        if (numbersList.size() % 2 == 0){
-            return ( numbersList.get(numbersList.size()/2)+(numbersList.get(numbersList.size()/2-1)) /2);
+        ArrayList<Integer> copyList = new ArrayList<Integer>(numbersList);
+        Collections.sort(copyList);
+        if (copyList.size() % 2 == 0){
+            return ( copyList.get(copyList.size()/2)+(copyList.get(copyList.size()/2-1)) /2);
         }
-        return numbersList.get(numbersList.size()/2);
+        return copyList.get(copyList.size()/2);
     }
 
     @Override
