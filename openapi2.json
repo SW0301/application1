@@ -1,0 +1,144 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {}
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/",
+  "paths": {
+    "/numbers": {
+      "get": {
+        "tags": [
+          "Операции над массивом"
+        ],
+        "summary": "Получает название операции из тела запроса",
+        "operationId": "operationBodyUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "operation",
+            "description": "operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Открытие файла"
+        ],
+        "summary": "Получает информацию о файле и открывает его",
+        "operationId": "setFilePathUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "file_path",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Файл открыт"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/numbers/{operation}": {
+      "get": {
+        "tags": [
+          "Операции над массивом"
+        ],
+        "summary": "Получает название операции из URL",
+        "operationId": "operationPathUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "operation",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Entity": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        }
+      },
+      "title": "Entity"
+    }
+  }
+}
