@@ -95,36 +95,8 @@ public class NumbersController {
     @GetMapping("/{operation}")
     @ResponseBody
     public Object operationPath(@PathVariable String operation){
-        switch(operation) {
-            case "get_max_value": {MaxValue maxValue = new MaxValue();
-                maxValue.setMax_value(String.valueOf(numbersService.getMax(numbersList)));
-                return maxValue;}
-            case "get_min_value": {
-                MinValue minValue = new MinValue();
-                minValue.setMin_value(String.valueOf(numbersService.getMin(numbersList)));
-                return minValue;
-            }
-            case "get_median": {
-                Median median = new Median();
-                median.setMedian(String.valueOf(numbersService.median(numbersList)));
-                return median;
-            }
-            case "get_average_value": {
-                AverageValue averageValue = new AverageValue();
-                averageValue.setAverageValue(String.valueOf(numbersService.averageValue(numbersList)));
-                return averageValue;
-            }
-            case "get_longest_sequence_increase": {
-                LongestSequenceIncrease longestSequenceIncrease = new LongestSequenceIncrease();
-                longestSequenceIncrease.setLongestSequenceIncrease(Arrays.deepToString(numbersService.longestSequenceIncrease(numbersList)));
-                return longestSequenceIncrease;
-            }
-            case "get_longest_sequence_reduction": {
-                LongestSequenceReduction longestSequenceReduction = new LongestSequenceReduction();
-                longestSequenceReduction.setLongestSequenceReduction(Arrays.deepToString(numbersService.longestSequenceReduction(numbersList)));
-                return longestSequenceReduction;
-            }
-            default: return "Wrong operation";
-        }
+        Entity operationNew = new Entity();
+        operationNew.setOperation(operation);
+        return operationBody(operationNew);
     }
 }
