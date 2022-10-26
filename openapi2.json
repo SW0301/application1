@@ -21,13 +21,10 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "operation",
-            "description": "operation",
+            "in": "body",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/Entity"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -62,12 +59,11 @@
         ],
         "parameters": [
           {
-            "in": "body",
             "name": "file_path",
+            "in": "body",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/Entity"
-            }
+            "type": "string"
+
           }
         ],
         "responses": {
